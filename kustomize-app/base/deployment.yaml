@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kustomize-app
+  labels:
+    app: kustomize-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kustomize-app
+  template:
+    metadata:
+      labels:
+        app: kustomize-app
+    spec:
+      containers:
+      - name: server
+        image: ec2-18-223-203-158.us-east-2.compute.amazonaws.com:5000/openshifttest/nginx-alpine:latest
+        volumeMounts:
+          - name: kustomize-app
+            mountPath: /usr/share/nginx/html
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: "128M"
+          limits:
+            cpu: 100m
+            memory: "256M"
+        env:
+        - name: LOG_LEVEL
+          value: "DEBUG"
+      volumes:
+      - name: kustomize-app
+        configMap:
+          name: kustomize-app
+          items:
+          - key: body
+            path: index.html
