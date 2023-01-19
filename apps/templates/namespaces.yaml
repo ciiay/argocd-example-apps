@@ -6,11 +6,20 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: helm-guestbook
+  name: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
     argocd.argoproj.io/managed-by: new-namespace
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: helm-guestbook
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  # labels:
+  #   argocd.argoproj.io/managed-by: new-namespace
 ---
 apiVersion: v1
 kind: Namespace
@@ -18,8 +27,8 @@ metadata:
   name: helm-hooks
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-  labels:
-    argocd.argoproj.io/managed-by: new-namespace
+  # labels:
+  #   argocd.argoproj.io/managed-by: new-namespace
 ---
 apiVersion: v1
 kind: Namespace
@@ -27,8 +36,8 @@ metadata:
   name: kustomize-guestbook
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-  labels:
-    argocd.argoproj.io/managed-by: new-namespace
+  # labels:
+  #   argocd.argoproj.io/managed-by: new-namespace
 ---
 apiVersion: v1
 kind: Namespace
@@ -36,5 +45,5 @@ metadata:
   name: sync-waves
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-  labels:
-    argocd.argoproj.io/managed-by: new-namespace
+  # labels:
+  #   argocd.argoproj.io/managed-by: new-namespace
