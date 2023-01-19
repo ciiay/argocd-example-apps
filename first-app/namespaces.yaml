@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: managedns
+  name: argocd
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: argocd
+  name: managedns
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
