@@ -5,4 +5,5 @@ metadata:
   namespace: argocd
   labels:
     example: basic
+    argocd.argoproj.io/managed-by: openshift-gitops
 spec: {}
